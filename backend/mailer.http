@@ -1,0 +1,17 @@
+### Welcome Email
+GET http://localhost:3000/mailer/welcome?to=olaachieng123@gmail.com&name=Leah
+
+### Notify Admin of New Order
+GET http://localhost:3000/mailer/order?userName=Leah&product=Purple Yarn
+
+### Notify User of Order Confirmation
+GET http://localhost:3000/mailer/confirm?to=olaachieng123@gmail.com&product=Purple Yarn
+
+### Contact Seller Message (to Admin)
+POST http://localhost:3000/mailer/contact
+Content-Type: application/json
+
+{
+  "senderEmail": "buyer@example.com",
+  "message": "Hi! I’d like to know more about the purple yarn you listed."
+}
