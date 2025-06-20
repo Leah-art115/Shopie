@@ -10,7 +10,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
-    ConfigModule, // 👈 ensure ConfigService is available
+    ConfigModule,
     PrismaModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

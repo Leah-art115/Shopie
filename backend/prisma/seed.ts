@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
@@ -20,13 +23,40 @@ async function main() {
         email: adminEmail,
         password: hashedPassword,
         phone: '0700000000',
-        role: 'admin',
+        role: 'ADMIN',
       },
     });
 
     console.log('Admin created successfully');
   } else {
     console.log('Admin already exists');
+  }
+
+  // Add default categories if not already present
+  const categoryNames = [
+    'Clothing',
+    'Accessories',
+    'Home Decor',
+    'Bags & Purses',
+    'Toys & Dolls',
+    'Blankets & Throws',
+    'Hats & Headwear',
+    'Jewelry',
+    'Shoes & Slippers',
+    "Men's Clothes",
+    "Women's Clothes",
+    "Kids' Clothes",
+  ];
+
+  for (const name of categoryNames) {
+    const existingCategory = await prisma.category.findUnique({
+      where: { name },
+    });
+
+    if (!existingCategory) {
+      await prisma.category.create({ data: { name } });
+      console.log(`Category "${name}" created`);
+    }
   }
 }
 

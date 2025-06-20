@@ -8,10 +8,13 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { AdminModule } from './admin/admin.module';
+import { ProductsModule } from './products/products.module';
+import { CloudinaryService } from './common/cloudinary.service'
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), MailerModule, AuthModule, UserModule, PrismaModule, AdminModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), MailerModule, AuthModule, UserModule, PrismaModule, AdminModule, ProductsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CloudinaryService],
+   exports: [CloudinaryService],
 })
 export class AppModule {}

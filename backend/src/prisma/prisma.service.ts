@@ -1,17 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/require-await */
-import { Injectable, OnModuleInit, INestApplication } from '@nestjs/common';
+import {
+  Injectable,
+  OnModuleInit,
+  INestApplication,
+  OnModuleDestroy,
+} from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  [x: string]: any;
   async onModuleInit() {
     await this.$connect();
   }
 
   async enableShutdownHooks(app: INestApplication) {
-    (this.$on as any)('beforeExit', async () => {
-      await app.close();
-    });
+    app.enableShutdownHooks();
+  }
+
+  async onModuleDestroy() {
+    await this.$disconnect();
   }
 }

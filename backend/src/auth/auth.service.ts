@@ -1,5 +1,7 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import {
   Injectable,
   UnauthorizedException,
@@ -9,6 +11,8 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dto/register.dto';
+import { Role } from '@prisma/client';
+
 
 @Injectable()
 export class AuthService {
@@ -45,7 +49,7 @@ export class AuthService {
         email,
         phone,
         password: hashedPassword,
-        role: 'user',
+        role: Role.USER,
       },
       select: {
         id: true,
@@ -56,6 +60,7 @@ export class AuthService {
         createdAt: true,
       },
     });
+
 
     return {
       message: 'User registered successfully',

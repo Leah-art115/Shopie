@@ -1,0 +1,82 @@
+### Admin Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "olaachieng123@gmail.com",
+  "password": "Admin123"
+}
+
+### Create Category
+POST http://localhost:3000/products/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMxNTI1LCJleHAiOjE3NTA0MTc5MjV9.FDAFpIhriI1_zIReilq4UU5XpaDIYzp9wLn5wJ-lL1c
+Content-Type: application/json
+
+{
+  "name": "Accessories new"
+}
+
+### Get All Categories
+GET http://localhost:3000/products/categories/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyNzEzLCJleHAiOjE3NTA0MTkxMTN9.Kghd7-A2M_-JCH4SlxBnT09caX81zse1tKqGwNT7j2I
+
+
+### Post a Product
+POST http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyNzEzLCJleHAiOjE3NTA0MTkxMTN9.Kghd7-A2M_-JCH4SlxBnT09caX81zse1tKqGwNT7j2I
+Content-Type: application/json
+
+{
+  "name": "Elegant Crochet Tote",
+  "description": "Spacious and stylish handmade crochet tote bag.",
+  "price": 2500,
+  "stock": 10,
+  "sale": true,
+  "salePrice": 2000,
+  "isNew": true,
+  "isHot": true,
+  "isTrending": false,
+  "categoryIds": [1, 4],
+  "imageUrls": [
+    "https://example.com/images/tote1.jpg",
+    "https://example.com/images/tote2.jpg"
+  ]
+}
+
+
+### Get All Products
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+
+### Get Single Product by ID
+GET http://localhost:3000/products/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+
+### Update Product
+PATCH http://localhost:3000/products/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+Content-Type: application/json
+
+{
+  "name": "Updated Crochet Bag",
+  "description": "Updated description with even better detail.",
+  "price": 2500,
+  "stock": 10,
+  "sale": false,
+  "salePrice": null,
+  "isNew": false,
+  "isHot": true,
+  "isTrending": false,
+  "categoryIds": ["4"],
+  "imageUrls": [
+    "https://example.com/images/updated1.jpg"
+  ]
+}
+
+### Delete Image by ID
+DELETE http://localhost:3000/products/image/<IMAGE_ID>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+
+### Delete a product by ID
+DELETE http://localhost:3000/products/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
