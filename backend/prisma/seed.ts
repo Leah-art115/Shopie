@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
@@ -32,7 +29,6 @@ async function main() {
     console.log('Admin already exists');
   }
 
-  // Add default categories if not already present
   const categoryNames = [
     'Clothing',
     'Accessories',

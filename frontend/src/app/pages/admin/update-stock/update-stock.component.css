@@ -1,0 +1,176 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+}
+
+.admin-page {
+  margin-left: 250px;
+  padding: 30px;
+  color: var(--text-color);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-header h2 {
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.refresh-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background-color: var(--primary-color);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-color);
+}
+
+.error {
+  background-color: #f8d7da;
+  color: var(--error-color);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error button {
+  background-color: var(--error-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.update-stock-container {
+  max-width: 600px;
+}
+
+.stock-form {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(106, 76, 147, 0.1);
+}
+
+.current-product-info {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.current-product-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.product-details p {
+  margin: 8px 0;
+  color: var(--text-color);
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.no-products {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+}
+
+.no-products p {
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.create-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.create-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+}

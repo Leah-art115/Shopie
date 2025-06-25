@@ -1,0 +1,18 @@
+<div class="contact-container">
+  <h2>Requests / Complaints</h2>
+
+  <div class="form-group">
+    <label>Your Message</label>
+    <textarea
+      [(ngModel)]="message"
+      rows="6"
+      placeholder="Type your request or complaint..."
+    ></textarea>
+  </div>
+
+  <button (click)="sendMessage()" [disabled]="loading">
+    {{ loading ? 'Sending...' : 'Send Message' }}
+  </button>
+
+  <div class="feedback" *ngIf="feedback">{{ feedback }}</div>
+</div>

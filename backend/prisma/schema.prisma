@@ -13,28 +13,30 @@ enum Role {
 }
 
 model User {
-  id                Int               @id @default(autoincrement())
-  fullName          String
-  email             String            @unique
-  phone             String?           @unique
-  password          String
-  role              Role              @default(USER)
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id        Int      @id @default(autoincrement())
+  fullName  String
+  email     String   @unique
+  phone     String?  @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  shippingAddress   ShippingAddress?  @relation("UserShippingAddress")
-  shippingAddressId Int?              @unique
+  shippingAddress   ShippingAddress? @relation("UserShippingAddress")
+  shippingAddressId Int?             @unique
 
-  products          Product[]         @relation("UserProducts")
-  cartItems         Cart[]            @relation("UserCartItems")
-  likedProducts     LikedProduct[]    @relation("UserLikedProducts")
-  orders            Order[]           @relation("UserOrders")
-  reviews           Review[]          @relation("UserReviews")
+  products      Product[]      @relation("UserProducts")
+  cartItems     Cart[]         @relation("UserCartItems")
+  likedProducts LikedProduct[] @relation("UserLikedProducts")
+  orders        Order[]        @relation("UserOrders")
+  reviews       Review[]       @relation("UserReviews")
+  isDeleted Boolean  @default(false) 
 }
 
 model ShippingAddress {
   id        Int    @id @default(autoincrement())
   region    String
+  county    String
   subcounty String
   town      String
   userId    Int    @unique
@@ -42,27 +44,28 @@ model ShippingAddress {
 }
 
 model Product {
-  id          Int              @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   name        String
   description String
   price       Float
   stock       Int
-  sale        Boolean          @default(false)
+  sale        Boolean           @default(false)
   salePrice   Float?
-  isNew       Boolean          @default(false)
-  isHot       Boolean          @default(false)
-  isTrending  Boolean          @default(false)
-  isDeleted   Boolean          @default(false)
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  isNew       Boolean           @default(false)
+  isHot       Boolean           @default(false)
+  isTrending  Boolean           @default(false)
+  isDeleted   Boolean           @default(false)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
   sellerId    Int
-  seller      User             @relation("UserProducts", fields: [sellerId], references: [id])
+  seller      User              @relation("UserProducts", fields: [sellerId], references: [id])
   images      ProductImage[]
   categories  ProductCategory[]
-  cartItems   Cart[]           @relation("ProductInCart")
+  cartItems   Cart[]            @relation("ProductInCart")
   likedBy     LikedProduct[]
   orders      Order[]
-  reviews     Review[]         @relation("ProductReviews")
+  reviews     Review[]          @relation("ProductReviews")
+  orderItems  OrderItem[]
 }
 
 model ProductImage {
@@ -73,8 +76,8 @@ model ProductImage {
 }
 
 model Category {
-  id       Int              @id @default(autoincrement())
-  name     String           @unique
+  id       Int               @id @default(autoincrement())
+  name     String            @unique
   products ProductCategory[]
 }
 
@@ -104,16 +107,18 @@ model LikedProduct {
 }
 
 model Order {
-  id        Int     @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   userId    Int
   productId Int
   status    String
-  user      User    @relation("UserOrders", fields: [userId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
+  items     OrderItem[]
+  user      User        @relation("UserOrders", fields: [userId], references: [id])
+  product   Product     @relation(fields: [productId], references: [id])
+  createdAt DateTime    @default(now())
 }
 
 model Review {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   rating    Int
   comment   String
   createdAt DateTime @default(now())
@@ -125,3 +130,21 @@ model Review {
   product Product @relation("ProductReviews", fields: [productId], references: [id])
 }
 
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  createdAt DateTime @default(now())
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  sender    String
+  receiver  String
+  content   String
+  createdAt DateTime @default(now())
+}

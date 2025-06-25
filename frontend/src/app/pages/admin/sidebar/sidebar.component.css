@@ -1,0 +1,66 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 121px; 
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 20px 0;
+  font-size: 18px; 
+}
+
+.sidebar a {
+  text-decoration: none; 
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: var(--accent-color);
+}
+
+.logout-button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  border: none;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+ 
+}
+
+.logout-button:hover {
+  transition: background-color 0.3s;
+  background-color: (var(--accent-color));
+}

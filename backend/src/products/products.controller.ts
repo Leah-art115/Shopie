@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Req,
   UnauthorizedException,
   UploadedFiles,
@@ -47,9 +48,20 @@ export class ProductsController {
     return this.productsService.getAllProducts();
   }
 
+  // New search endpoint
+  @Get('search')
+  searchProducts(@Query('search') searchQuery: string) {
+    if (!searchQuery || searchQuery.trim() === '') {
+      throw new BadRequestException('Search query is required');
+    }
+    return this.productsService.searchProducts(searchQuery.trim());
+  }
+
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productsService.getProductById(+id);
+  getProductById(@Param('id') id: string) {
+    const productId = parseInt(id, 10);
+    if (isNaN(productId)) throw new BadRequestException('Invalid product ID');
+    return this.productsService.getProductById(productId);
   }
 
   @Delete(':id')
@@ -75,5 +87,20 @@ export class ProductsController {
   @Delete('image/:imageId')
   removeImage(@Param('imageId') imageId: string) {
     return this.productsService.deleteProductImage(+imageId);
+  }
+
+  @Get('hot')
+  getHotProducts() {
+    return this.productsService.getHotProducts();
+  }
+
+  @Get('new')
+  getNewProducts() {
+    return this.productsService.getNewProducts();
+  }
+
+  @Get('trending')
+  getTrendingProducts() {
+    return this.productsService.getTrendingProducts();
   }
 }

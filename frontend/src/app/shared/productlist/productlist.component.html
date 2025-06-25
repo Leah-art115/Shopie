@@ -1,0 +1,12 @@
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products">
+    <img *ngIf="product.images && product.images.length" [src]="product.images[0].url" alt="{{ product.name }}" />
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description | slice:0:100 }}...</p>
+    <div class="actions">
+      <button (click)="likeProduct(product)">❤ Like</button>
+      <button (click)="addToCart(product)">🛒 Add to Cart</button>
+      <button (click)="messageSeller(product)">📩 Message</button>
+    </div>
+  </div>
+</div>

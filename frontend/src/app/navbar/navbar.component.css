@@ -1,0 +1,104 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  color: var(--text-dark);
+}
+
+nav.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: var(--white);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+nav.top-nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+nav.top-nav .right a {
+  margin-left: 20px;
+  color: var(--primary-color);
+  font-size: 20px;
+  text-decoration: none; 
+  cursor: pointer; 
+  display: inline-block; 
+  padding: 8px; 
+  transition: color 0.3s ease; 
+}
+
+nav.top-nav .right a:hover {
+  color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+nav.top-nav .right a fa-icon {
+  pointer-events: none; 
+  display: block;
+}
+
+nav.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+nav.main-nav .left a,
+nav.main-nav .left button {
+  margin-right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--white);
+  text-decoration: none; 
+}
+
+nav.main-nav .right button {
+  background-color: var(--white);
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+nav.main-nav .right input[type="search"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 150px;
+}
+
+.categories-dropdown {
+  background-color: var(--white);
+  padding: 10px 40px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.categories-dropdown a {
+  margin-right: 20px;
+  color: var(--primary-color);
+  text-decoration: none;
+}

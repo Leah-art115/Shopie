@@ -1,0 +1,30 @@
+<div class="profile-container">
+  <div class="box">
+    <div class="box-header">
+      <h3>User Details</h3>
+      <fa-icon [icon]="faPen" (click)="startEdit()" class="edit-icon"></fa-icon>
+    </div>
+
+    <div class="box-body" *ngIf="!editing">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+    </div>
+
+    <div class="box-body" *ngIf="editing">
+      <label>Name: <input type="text" [(ngModel)]="user.name"></label>
+      <label>Email: <input type="email" [(ngModel)]="user.email"></label>
+      <label>Phone: <input type="text" [(ngModel)]="user.phone"></label>
+      <button (click)="saveEdit()">Save</button>
+    </div>
+
+  </div>
+
+  <app-shipping-address></app-shipping-address>
+
+  <!-- Logout Button -->
+<div class="logout-container">
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+
+</div>

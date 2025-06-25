@@ -1,0 +1,138 @@
+### Register a new user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test User",
+  "email": "testuser@example.com",
+  "password": "password123",
+  "confirmPassword": "password123"
+}
+
+###
+
+### Login (get JWT token)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "olaachieng@gmail.com",
+  "password": "Password123"
+}
+
+
+###
+
+### View profile
+GET http://localhost:3000/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### Update profile
+POST http://localhost:3000/user/update-profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+Content-Type: application/json
+
+{
+  "id": "3",
+  "fullName": "Leah Ochieng",
+  "phone": "0735145519"
+}
+
+###
+
+### Add shipping address
+POST http://localhost:3000/user/set-shipping-address
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+Content-Type: application/json
+
+{
+  "region": "Nairobi Region",
+  "county": "Nairobi",
+  "subcounty": "Westlands",
+  "town": "Kileleshwa"
+}
+
+
+
+###
+
+### View all products
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+#
+
+###
+
+### Like a product
+POST http://localhost:3000/user/like/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### Unlike a product
+POST http://localhost:3000/user/unlike/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### View liked products
+GET http://localhost:3000/user/liked
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### Add product to cart
+POST http://localhost:3000/user/cart/add/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+Content-Type: application/json
+
+{
+  "productId": 2,
+  "quantity": 2
+}
+
+###
+
+### Remove product from cart
+POST http://localhost:3000/user/cart/remove/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### View cart items
+GET http://localhost:3000/user/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### Place order
+POST http://localhost:3000/user/order/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+
+###
+
+### Reset password (initiate)
+POST http://localhost:3000/auth/request-reset
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com"
+}
+
+###
+
+### Contact a seller (sends email)
+POST http://localhost:3000/user/contact-seller
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoib2xhYWNoaWVuZ0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc1MDYwMjAxOCwiZXhwIjoxNzUwNjg4NDE4fQ.W4Sk1NzXKwgtHIWR1lb3EHHNnheceUUxTJHtt6RDNzM
+Content-Type: application/json
+
+{
+  "sellerEmail": "seller@example.com",
+  "subject": "Product Inquiry",
+  "message": "Hi, I want more details about your product."
+}

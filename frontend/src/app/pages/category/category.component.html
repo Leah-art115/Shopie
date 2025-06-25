@@ -1,0 +1,18 @@
+<div class="category-page">
+  <h2>{{ categoryName }}</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error">{{ error }}</div>
+
+  <div *ngIf="!loading && products.length === 0">
+    No products in this category yet.
+  </div>
+
+  <div class="product-grid" *ngIf="products.length > 0">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.images?.[0]?.url || '/assets/no-image.png'" alt="{{ product.name }}" />
+      <h3>{{ product.name }}</h3>
+      <p>Ksh {{ product.price }}</p>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Create Category
 POST http://localhost:3000/products/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMxNTI1LCJleHAiOjE3NTA0MTc5MjV9.FDAFpIhriI1_zIReilq4UU5XpaDIYzp9wLn5wJ-lL1c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA
 Content-Type: application/json
 
 {
@@ -18,16 +18,16 @@ Content-Type: application/json
 
 ### Get All Categories
 GET http://localhost:3000/products/categories/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyNzEzLCJleHAiOjE3NTA0MTkxMTN9.Kghd7-A2M_-JCH4SlxBnT09caX81zse1tKqGwNT7j2I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA3MzU2MjcsImV4cCI6MTc1MDgyMjAyN30.Qhorw84pZliUUCc_4dTbNFmtBBGxPnNVvdj9K31gvwE
 
 
 ### Post a Product
 POST http://localhost:3000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyNzEzLCJleHAiOjE3NTA0MTkxMTN9.Kghd7-A2M_-JCH4SlxBnT09caX81zse1tKqGwNT7j2I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA
 Content-Type: application/json
 
 {
-  "name": "Elegant Crochet Tote",
+  "name": "Elegant Crochet Bag",
   "description": "Spacious and stylish handmade crochet tote bag.",
   "price": 2500,
   "stock": 10,
@@ -38,23 +38,23 @@ Content-Type: application/json
   "isTrending": false,
   "categoryIds": [1, 4],
   "imageUrls": [
-    "https://example.com/images/tote1.jpg",
-    "https://example.com/images/tote2.jpg"
+    "https://images.unsplash.com/photo-1589739903200-74a81c8b9d89",
+    "https://images.unsplash.com/photo-1605266172335-0f7e1ff291b7"
   ]
 }
 
 
 ### Get All Products
 GET http://localhost:3000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA3OTA3OTcsImV4cCI6MTc1MDg3NzE5N30.13Pt1DPLzYZq2V5y2_-IRrjFwWv-FgF0PAAJKpuOu6Y
 
 ### Get Single Product by ID
 GET http://localhost:3000/products/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA
 
 ### Update Product
 PATCH http://localhost:3000/products/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA
 Content-Type: application/json
 
 {
@@ -74,9 +74,9 @@ Content-Type: application/json
 }
 
 ### Delete Image by ID
-DELETE http://localhost:3000/products/image/<IMAGE_ID>
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+DELETE http://localhost:3000/products/image/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA
 
 ### Delete a product by ID
 DELETE http://localhost:3000/products/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzNiYTBhYy1hZjkyLTRhNDAtYWE0ZS03NmI5NWYwNTRhOWQiLCJlbWFpbCI6Im9sYWFjaGllbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUwMzMyODk2LCJleHAiOjE3NTA0MTkyOTZ9.qoKb0YIWmyRg3fYEoJA3WWldfyRxHRVPnJAtGuAa81s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDA0MjksImV4cCI6MTc1MDY4NjgyOX0.J8f1-5ZwN8el1EfE6o9CCc_jWIxSLmMESbQRo-Yk2lA

@@ -1,0 +1,142 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0;
+  color: var(--text-color);
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 18px;
+}
+
+.badges .badge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 4px;
+  color: white;
+}
+
+.badge.hot {
+  background-color: red;
+}
+
+.badge.new {
+  background-color: green;
+}
+
+.badge.trending {
+  background-color: orange;
+}
+
+.product-actions-minimal {
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  margin-top: 10px;
+  justify-content: flex-start;
+  color: var(--primary-color);
+}
+
+.product-actions-minimal i {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.product-actions-minimal i:hover {
+  color: var(--secondary-color);
+}
+
+.liked-icon {
+  color: #d6336c;
+}
+
+.message-popup {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background-color: var(--accent-color);
+}
+
+.message-popup textarea {
+  width: 100%;
+  height: 60px;
+  resize: vertical;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 6px;
+}
+
+.message-popup button {
+  margin-right: 6px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.product-actions-minimal {
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  margin-top: 10px;
+  justify-content: flex-start;
+  color: var(--primary-color);
+}
+
+.product-actions-minimal i {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.product-actions-minimal i:hover {
+  color: var(--secondary-color);
+}
+
+.liked-icon {
+  color: #d6336c;
+}

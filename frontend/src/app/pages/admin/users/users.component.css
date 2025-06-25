@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+.admin-page {
+  margin-left: 240px;
+  padding: 30px;
+  color: var(--text-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid var(--light-gray);
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--accent-color);
+  color: var(--white);
+}

@@ -1,0 +1,37 @@
+<div class="account-container">
+  <div class="profile-card">
+    <div class="card-header">
+      <h3>Shipping Address</h3>
+      <fa-icon [icon]="faPen" class="edit-icon" (click)="startEdit()" title="Edit"></fa-icon>
+    </div>
+
+    <div *ngIf="hasAddress">
+      <p><strong>County:</strong> {{ shippingAddress.county }}</p>
+      <p><strong>Subcounty:</strong> {{ shippingAddress.subcounty }}</p>
+      <p><strong>Town:</strong> {{ shippingAddress.town }}</p>
+    </div>
+
+    <form *ngIf="!hasAddress || editing" (ngSubmit)="saveAddress()">
+      <label>
+        County:
+        <input type="text" [(ngModel)]="county" name="county" required />
+      </label>
+
+      <label>
+        Subcounty:
+        <input type="text" [(ngModel)]="subcounty" name="subcounty" required />
+      </label>
+
+      <label>
+        Town:
+        <input type="text" [(ngModel)]="town" name="town" required />
+      </label>
+
+      <button type="submit" class="btn-save">Save Address</button>
+    </form>
+
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+  </div>
+</div>

@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable prettier/prettier */
 import {
   BadRequestException,
@@ -15,9 +9,20 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CloudinaryService } from '../common/cloudinary.service';
 import { Express } from 'express';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProductsService {
+  getHotProducts() {
+    throw new Error('Method not implemented.');
+  }
+  getNewProducts() {
+    throw new Error('Method not implemented.');
+  }
+  getTrendingProducts() {
+    throw new Error('Method not implemented.');
+  }
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly cloudinaryService: CloudinaryService,
@@ -49,11 +54,13 @@ export class ProductsService {
 
     const uploadedImageUrls: string[] = [];
 
-    for (const image of images) {
-      const buffer = image.buffer;
-      const filename = `${Date.now()}-${image.originalname}`;
-      const imageUrl = await this.cloudinaryService.uploadImage(buffer, filename);
-      uploadedImageUrls.push(imageUrl);
+    if (Array.isArray(images)) {
+      for (const image of images) {
+        const buffer = image.buffer;
+        const filename = `${Date.now()}-${image.originalname}`;
+        const imageUrl = await this.cloudinaryService.uploadImage(buffer, filename);
+        uploadedImageUrls.push(imageUrl);
+      }
     }
 
     const product = await this.prisma.product.create({
@@ -131,17 +138,87 @@ export class ProductsService {
     });
   }
 
-  async getProductById(productId: number) {
-    const product = await this.prisma.product.findUnique({
-      where: { id: productId },
+  async searchProducts(searchQuery: string) {
+    const searchTerms = searchQuery.split(' ').filter(term => term.length > 0);
+
+    return this.prisma.product.findMany({
+      where: {
+        isDeleted: false,
+        OR: [
+          {
+            name: {
+              contains: searchQuery,
+              mode: Prisma.QueryMode.insensitive,
+            },
+          },
+          {
+            description: {
+              contains: searchQuery,
+              mode: Prisma.QueryMode.insensitive,
+            },
+          },
+          ...searchTerms.map(term => ({
+            name: {
+              contains: term,
+              mode: Prisma.QueryMode.insensitive,
+            },
+          })),
+          ...searchTerms.map(term => ({
+            description: {
+              contains: term,
+              mode: Prisma.QueryMode.insensitive,
+            },
+          })),
+          {
+            categories: {
+              some: {
+                category: {
+                  name: {
+                    contains: searchQuery,
+                    mode: Prisma.QueryMode.insensitive,
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
       include: {
         categories: { include: { category: true } },
         images: true,
       },
+      orderBy: [
+        {
+          name: 'asc',
+        },
+        {
+          createdAt: 'desc',
+        },
+      ],
+    });
+  }
+
+  async getProductById(productId: number) {
+    if (!productId || isNaN(productId)) {
+      throw new BadRequestException('Invalid product ID');
+    }
+
+    const product = await this.prisma.product.findUnique({
+      where: { id: productId },
+      include: {
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+        images: true,
+      },
     });
 
-    if (!product || product.isDeleted)
+    if (!product) {
       throw new NotFoundException('Product not found');
+    }
+
     return product;
   }
 

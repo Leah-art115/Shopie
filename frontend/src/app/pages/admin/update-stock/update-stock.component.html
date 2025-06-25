@@ -1,0 +1,67 @@
+<div class="admin-page">
+  <div class="page-header">
+    <h2>Update Stock</h2>
+    <button class="refresh-btn" (click)="refreshProducts()" [disabled]="loading">
+      {{ loading ? 'Loading...' : 'Refresh Products' }}
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading products...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="loadProducts()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="update-stock-container">
+    <form [formGroup]="updateStockForm" (ngSubmit)="updateStock()" class="stock-form">
+      
+      <div class="form-group">
+        <label for="productId">Select Product:</label>
+        <select id="productId" formControlName="productId" class="form-control">
+          <option value="">-- Choose a Product --</option>
+          <option *ngFor="let product of products" [value]="product.id">
+            {{ product.name }} (Current Stock: {{ product.stock }})
+          </option>
+        </select>
+      </div>
+
+      <div *ngIf="selectedProduct" class="current-product-info">
+        <h3>Selected Product Details:</h3>
+        <div class="product-details">
+          <p><strong>Name:</strong> {{ selectedProduct.name }}</p>
+          <p><strong>Current Stock:</strong> {{ selectedProduct.stock }}</p>
+          <p><strong>Price:</strong> KES {{ selectedProduct.price }}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="newStock">New Stock Quantity:</label>
+        <input 
+          type="number" 
+          id="newStock" 
+          formControlName="newStock" 
+          class="form-control"
+          placeholder="Enter new stock quantity"
+          min="0"
+        >
+      </div>
+
+      <button 
+        type="submit" 
+        class="submit-btn"
+        [disabled]="!updateStockForm.valid || updating"
+      >
+        {{ updating ? 'Updating...' : 'Update Stock' }}
+      </button>
+    </form>
+
+    <div *ngIf="products.length === 0" class="no-products">
+      <p>No products found.</p>
+      <p>Create some products first before updating stock.</p>
+      <a routerLink="/admin/create-product" class="create-link">Create Product</a>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
   Controller,
@@ -7,6 +11,7 @@ import {
   Body,
   Param,
   UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../common/guards/jwt.guard';
 import { RequestWithUser } from '../common/types/request-with-user';
@@ -19,6 +24,7 @@ import { ReviewProductDto } from './dto/review-product.dto';
 @UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
+  productsService: any;
   constructor(private readonly userService: UserService) {}
 
   @Get('profile')

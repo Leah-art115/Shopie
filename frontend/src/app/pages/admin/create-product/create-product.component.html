@@ -1,0 +1,73 @@
+<div class="admin-page">
+  <h2>Create Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="submit()" class="create-product-form" novalidate>
+    
+    <input
+      type="text"
+      placeholder="Product Name"
+      formControlName="name"
+      required
+      autocomplete="off"
+      class="form-input"
+    />
+
+    <textarea
+      placeholder="Description"
+      formControlName="description"
+      required
+      rows="4"
+      class="form-textarea"
+    ></textarea>
+
+    <input
+      type="number"
+      placeholder="Price"
+      formControlName="price"
+      required
+      min="0"
+      class="form-input"
+    />
+
+    <input
+      type="number"
+      placeholder="Stock"
+      formControlName="stock"
+      required
+      min="0"
+      class="form-input"
+    />
+
+    <select formControlName="category" required class="form-select">
+      <option value="" disabled selected>Select Category</option>
+      <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+    </select>
+
+    <div class="checkboxes">
+      <label><input type="checkbox" formControlName="isHot" /> Hot</label>
+      <label><input type="checkbox" formControlName="isNew" /> New</label>
+      <label><input type="checkbox" formControlName="isTrending" /> Trending</label>
+    </div>
+
+    <label class="file-input-label">
+  Upload Images (You can select multiple)
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    multiple
+    accept="image/*"
+  />
+</label>
+
+<div class="image-previews" *ngIf="imagePreviews.length > 0">
+  <div *ngFor="let img of imagePreviews" class="preview">
+    <img [src]="img" alt="Selected image preview" />
+  </div>
+</div>
+
+
+    <button type="submit" class="submit-btn" [disabled]="productForm.invalid || imageFiles.length === 0">
+      Create Product
+    </button>
+  </form>
+</div>

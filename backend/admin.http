@@ -1,0 +1,58 @@
+### Admin Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "olaachieng123@gmail.com",
+  "password": "Admin123"
+}
+
+### Get all products with remaining stock
+GET http://localhost:3000/admin/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+### Get all products with stock
+GET http://localhost:3000/admin/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+
+### Update product stock
+PATCH http://localhost:3000/admin/stock
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+Content-Type: application/json
+
+{
+  "categoryId": 4,
+  "productId": 2,
+  "amount": 30
+}
+
+
+### Soft delete a product
+DELETE http://localhost:3000/admin/product/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+
+### Get all users
+GET http://localhost:3000/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA4MDUwNzksImV4cCI6MTc1MDg5MTQ3OX0.WVyqKYXHpab8gzXopOCjo4CiythAtZR6SlyUnWaKg1U
+
+
+### Get all orders
+GET http://localhost:3000/admin/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+
+### Confirm an order
+PATCH http://localhost:3000/admin/order/1/confirm
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+
+### Cancel an order
+PATCH http://localhost:3000/admin/order/1/cancel
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8
+
+
+### Get all messages
+GET http://localhost:3000/admin/messages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoib2xhYWNoaWVuZzEyM0BnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NTA2MDE4MzUsImV4cCI6MTc1MDY4ODIzNX0.c6qV2ogwRMXKPE5whNQK8XoxNZ-UyOBYierD6YQmcx8

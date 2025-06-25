@@ -1,0 +1,38 @@
+<nav class="top-nav">
+  <div class="left">
+    <div class="logo">CROCHET SHOPIE</div>
+  </div>
+  <div class="right">
+    <a (click)="onUserIconClick()"><fa-icon [icon]="faUser"></fa-icon></a>
+    <a (click)="goToLiked()"><fa-icon [icon]="faHeart"></fa-icon></a>
+    <a (click)="goToCart()"><fa-icon [icon]="faBasket"></fa-icon></a>
+    <a (click)="goToContactSeller()"><fa-icon [icon]="faEnvelope"></fa-icon></a>
+  </div>
+</nav>
+
+<nav class="main-nav">
+  <div class="left">
+    <a (click)="goToHome()">Home</a>
+    <button (click)="toggleCategories()">Categories</button>
+  </div>
+  <div class="right">
+    <div class="search-container">
+      <input 
+        type="search" 
+        placeholder="Search products..." 
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+        #searchInput
+      />
+      <button (click)="onSearch()">
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="categories-dropdown" *ngIf="showCategories">
+  <a *ngFor="let category of categories" (click)="goToCategory(category)">
+    {{ category }}
+  </a>
+</div>

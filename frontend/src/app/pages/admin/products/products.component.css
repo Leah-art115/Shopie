@@ -1,0 +1,77 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+.admin-page {
+  margin-left: 240px;
+  padding: 30px;
+  color: var(--text-color);
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.badges {
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--white);
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.badge.hot {
+  background-color: red;
+}
+
+.badge.new {
+  background-color: green;
+}
+
+.badge.trending {
+  background-color: orange;
+}
+
+.delete-btn {
+  margin-top: 12px;
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}

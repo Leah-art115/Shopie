@@ -1,0 +1,113 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+.admin-page {
+  max-width: 580px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: var(--background-color, #f9f7fb);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(106, 76, 147, 0.2);
+  font-family: Arial, sans-serif;
+  color: var(--text-color, #333);
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary-color, #6a4c93);
+  margin-bottom: 20px;
+}
+
+.create-product-form input[type="text"],
+.create-product-form input[type="number"],
+.create-product-form textarea,
+.create-product-form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1.5px solid var(--secondary-color, #b491c8);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.create-product-form input[type="text"]:focus,
+.create-product-form input[type="number"]:focus,
+.create-product-form textarea:focus,
+.create-product-form select:focus {
+  outline: none;
+  border-color: var(--primary-color, #6a4c93);
+}
+
+.create-product-form textarea {
+  resize: vertical;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.checkboxes label {
+  font-size: 0.9rem;
+  color: var(--text-color, #333);
+  cursor: pointer;
+}
+
+.file-input-label {
+  display: block;
+  padding: 10px;
+  background-color: var(--secondary-color, #b491c8);
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.file-input-label input[type="file"] {
+  display: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color, #6a4c93);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #5b3f7d;
+}
+
+.image-previews {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.image-previews .preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

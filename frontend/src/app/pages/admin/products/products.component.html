@@ -1,0 +1,29 @@
+<div class="admin-page">
+  <h2>All Products</h2>
+  
+  <div *ngIf="loading" class="loading">Loading products...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  
+  <div class="product-list" *ngIf="!loading && !error">
+    <div class="product" *ngFor="let product of products; trackBy: trackByProductId">
+      <img [src]="product.images?.[0]?.url || '/assets/no-image.jpg'" 
+           [alt]="product.name" 
+           onerror="this.src='/assets/no-image.jpg'">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p><strong>Price:</strong> KES {{ product.price }}</p>
+      <p><strong>Stock:</strong> {{ product.stock }}</p>
+      <div class="badges">
+        <span *ngIf="product.isHot" class="badge hot">Hot</span>
+        <span *ngIf="product.isNew" class="badge new">New</span>
+        <span *ngIf="product.isTrending" class="badge trending">Trending</span>
+      </div>
+
+      <button class="delete-btn" (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading && !error && products.length === 0" class="no-products">
+    No products found. <a routerLink="/admin/create-product">Create your first product</a>
+  </div>
+</div>

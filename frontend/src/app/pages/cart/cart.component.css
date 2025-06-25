@@ -1,0 +1,158 @@
+:root {
+  --primary-color: #6A4C93;
+  --secondary-color: #B491C8;
+  --accent-color: #E0BBE4;
+  --background-color: #FFF8FD;
+  --text-color: #333333;
+  --light-gray: #f2f2f2;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: white;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.details h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.details p {
+  margin: 5px 0 0 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #7b2cbf;
+}
+
+.details > h3,
+.details > p {
+  flex-shrink: 0;
+}
+
+.details button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+  min-width: 100px;
+  margin-left: 10px;
+}
+
+.details button:first-of-type {
+  background: #c77dff;
+  color: white;
+}
+
+.details button:first-of-type:hover {
+  background: #a663cc;
+  transform: translateY(-1px);
+}
+
+.details button:last-of-type {
+  background: #7b2cbf;
+  color: white;
+}
+
+.details button:last-of-type:hover {
+  background: #5a189a;
+  transform: translateY(-1px);
+}
+
+.total button {
+  background: #240046;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.total button:hover {
+  background: #10002b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(36, 0, 70, 0.3);
+}
+
+.total {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e9ecff 100%);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.total h3 {
+  color: #240046;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 40px;
+  color: #7b2cbf;
+  font-size: 1.2em;
+}
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-container h2 {
+  color: #240046;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+  }
+  
+  .details button {
+    max-width: none;
+    width: 100%;
+  }
+}

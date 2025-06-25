@@ -1,0 +1,32 @@
+<div class="liked-container">
+  <h2>Liked Products</h2>
+
+  <div *ngIf="likedProducts.length === 0" class="empty-msg">
+    You haven't liked any products yet.
+  </div>
+
+  <div class="products-grid" *ngIf="likedProducts.length > 0">
+    <div class="product-card" *ngFor="let product of likedProducts">
+      <img [src]="product.images[0]?.url || '/assets/no-image.png'" alt="{{ product.name }}">
+
+      <h3>{{ product.name }}</h3>
+      <p class="product-price">${{ product.price }}</p>
+
+      <div class="badges">
+        <span *ngIf="product.isHot" class="badge hot">Hot</span>
+        <span *ngIf="product.isNew" class="badge new">New</span>
+        <span *ngIf="product.isTrending" class="badge trending">Trending</span>
+      </div>
+
+      <div class="categories">
+        <span *ngFor="let cat of product.categories">
+          {{ cat.category.name }}
+        </span>
+      </div>
+
+      <div class="product-actions-minimal">
+        <i class="material-icons liked-icon" (click)="unlike(product)">favorite</i>
+      </div>
+    </div>
+  </div>
+</div>

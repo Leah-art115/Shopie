@@ -1,0 +1,93 @@
+<div class="home-container">
+  <h2>All Products</h2>
+
+  <div *ngIf="loading" class="loading">Loading products...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="products-grid" *ngIf="!loading && products.length > 0">
+    <div class="product-card" *ngFor="let product of products">
+      <img
+        [src]="getImageUrl(product)"
+        [alt]="product.name || 'Product image'"
+        (error)="onImageError($event)"
+        [attr.loading]="getImageUrl(product) === '/assets/no-image.png' ? 'eager' : 'lazy'"
+      />
+      <h3>{{ product.name }}</h3>
+
+      <p class="product-price">${{ product.price | number: '1.2-2' }}</p>
+
+      <div class="badges" *ngIf="product.isHot || product.isNew || product.isTrending">
+        <span *ngIf="product.isHot" class="badge hot">Hot</span>
+        <span *ngIf="product.isNew" class="badge new">New</span>
+        <span *ngIf="product.isTrending" class="badge trending">Trending</span>
+      </div>
+
+      <div class="categories" *ngIf="product.categories && product.categories.length > 0">
+        <span *ngFor="let cat of product.categories" class="category-tag">
+          {{ cat.category?.name }}
+        </span>
+      </div>
+
+      <div class="product-actions-minimal">
+        <span
+          title="Like"
+          (click)="toggleLike(product)"
+          class="action-button"
+          [class.active]="isLiked(product)"
+        >
+          <i
+            class="fa"
+            [ngClass]="isLiked(product) ? 'fa-heart liked-icon' : 'fa-heart-o'"
+          ></i>
+        </span>
+
+        <span
+          title="Add to Cart"
+          (click)="addToCart(product)"
+          class="action-button"
+        >
+          <i class="fa fa-shopping-cart"></i>
+        </span>
+
+        <span
+          title="Message Seller"
+          (click)="toggleMessagePopup(product)"
+          class="action-button"
+        >
+          <i class="fa fa-envelope"></i>
+        </span>
+      </div>
+
+      <div class="message-popup" *ngIf="isMessagePopupOpen(product)">
+        <div class="message-popup-content">
+          <h4>Message Seller</h4>
+          <textarea
+            [(ngModel)]="messageTexts[product.id]"
+            placeholder="Write your message..."
+            rows="3"
+          ></textarea>
+          <div class="message-popup-actions">
+            <button
+              (click)="sendMessage(product)"
+              class="btn-primary"
+              [disabled]="!messageTexts[product.id]?.trim()"
+            >
+              Send
+            </button>
+            <button
+              (click)="toggleMessagePopup(product)"
+              class="btn-secondary"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && products.length === 0" class="no-products">
+    <i class="fa fa-box-open"></i>
+    <p>No products found.</p>
+  </div>
+</div>

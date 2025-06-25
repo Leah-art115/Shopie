@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslnumber-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/require-await */
+
 import {
   Injectable,
   NotFoundException,
@@ -39,6 +35,11 @@ export class UserService {
   }
 
   async updateProfile(userId: number, dto: UpdateUserDto) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
     return this.prisma.user.update({
       where: { id: userId },
       data: {
@@ -83,19 +84,35 @@ export class UserService {
 
   async addToCart(userId: number, productId: number) {
     const product = await this.prisma.product.findUnique({
-      where: { id: productId },
+      where: { id: +productId },
     });
 
     if (!product || product.stock < 1)
       throw new BadRequestException('Product not available');
 
     await this.prisma.product.update({
-      where: { id: productId },
-      data: { stock: { decrement: 1 } },
+      where: {
+        id: Number(productId),
+      },
+      data: {
+        stock: {
+          decrement: 1,
+        },
+      },
     });
 
     return this.prisma.cart.create({
       data: { userId, productId },
+    });
+  }
+
+  async placeOrder(userId: number, productId: number) {
+    return this.prisma.order.create({
+      data: {
+        userId,
+        productId: +productId,
+        status: 'pending',
+      },
     });
   }
 
@@ -104,9 +121,11 @@ export class UserService {
       where: { userId, productId },
     });
 
-    await this.prisma.product.update({
-      where: { id: productId },
-      data: { stock: { increment: 1 } },
+    await this.prisma.cart.deleteMany({
+      where: {
+        userId,
+        productId: Number(productId),
+      },
     });
 
     return { message: 'Product removed from cart' };
@@ -121,15 +140,20 @@ export class UserService {
 
   async likeProduct(userId: number, productId: number) {
     return this.prisma.likedProduct.create({
-      data: { userId, productId },
+      data: {
+        userId,
+        productId: Number(productId),
+      },
     });
   }
 
   async unlikeProduct(userId: number, productId: number) {
     await this.prisma.likedProduct.deleteMany({
-      where: { userId, productId },
+      where: {
+        userId,
+        productId: Number(productId),
+      },
     });
-    return { message: 'Product unliked' };
   }
 
   async getLikedProducts(userId: number) {
@@ -146,8 +170,12 @@ export class UserService {
     const { productId, message } = dto;
 
     const product = await this.prisma.product.findUnique({
-      where: { id: productId },
-      include: { seller: true },
+      where: {
+        id: Number(productId),
+      },
+      include: {
+        seller: true,
+      },
     });
 
     if (!product || !product.seller) {
@@ -155,12 +183,6 @@ export class UserService {
     }
 
     return { message: 'Your message has been sent to the seller.' };
-  }
-
-  async placeOrder(userId: number, productId: number) {
-    return this.prisma.order.create({
-      data: { userId, productId, status: 'pending' },
-    });
   }
 
   async resetPassword(userId: number, dto: ResetPasswordDto) {

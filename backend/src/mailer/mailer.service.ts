@@ -6,6 +6,10 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class MailerService {
+  sendOrderCancellationEmail: any;
+  sendOrderConfirmationEmail(email: string) {
+    throw new Error('Method not implemented.');
+  }
   sendOrderNotificationToAdmin(product: string, buyer: string) {
     throw new Error('Method not implemented.');
   }

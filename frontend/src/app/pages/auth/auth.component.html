@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <h2 *ngIf="showLogin">Login</h2>
+  <h2 *ngIf="!showLogin">Register</h2>
+
+  <!-- Login Form -->
+  <form [formGroup]="loginForm" *ngIf="showLogin" (ngSubmit)="login()" autocomplete="off">
+    <input type="email" name="login_email" autocomplete="off" placeholder="Email" formControlName="email">
+    <input type="password" name="login_password" autocomplete="new-password" placeholder="Password" formControlName="password">
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a (click)="toggleForm()">Register</a></p>
+  </form>
+
+  <!-- Register Form -->
+  <form [formGroup]="registerForm" *ngIf="!showLogin" (ngSubmit)="register()" autocomplete="off">
+    <input type="text" name="register_fullname" autocomplete="off" placeholder="Full Name" formControlName="fullName">
+    <input type="email" name="register_email" autocomplete="off" placeholder="Email" formControlName="email">
+    <input type="tel" name="register_phone" autocomplete="off" placeholder="Phone Number" formControlName="phoneNumber">
+    <input type="password" name="register_password" autocomplete="new-password" placeholder="Password" formControlName="password">
+    <input type="password" name="register_confirm" autocomplete="new-password" placeholder="Confirm Password" formControlName="confirmPassword">
+    <button type="submit">Register</button>
+    <p>Already have an account? <a (click)="toggleForm()">Login</a></p>
+  </form>
+</div>

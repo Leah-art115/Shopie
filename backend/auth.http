@@ -3,11 +3,11 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-  "fullName": "John Doe",
-  "email": "john@example.com",
-  "phone": "0712345678",
-  "password": "securePass123",
-  "confirmPassword": "securePass123"
+  "fullName": "Leah Achi",
+  "email": "rachaela2610@gmail.com",
+  "phone": "0705607227",
+  "password": "Password123",
+  "confirmPassword": "Password123"
 }
 
 ### LOGIN
@@ -15,8 +15,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email": "john@example.com",
-  "password": "securePass123"
+  "email": "olaachieng@gmail.com",
+  "password": "Password123"
 }
 
 
